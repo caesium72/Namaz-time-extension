@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Namaz Times</title>
+<link rel="stylesheet" href="css/popup.css" />
+</head>
+<body>
+  <div class="blob-field" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="blob blob-c"></span>
+  </div>
+  <div class="app">
+
+    <!-- Header -->
+    <header class="topbar">
+      <button class="location-btn" id="locationBtn" title="Change location">
+        <span class="pin">📍</span>
+        <span class="loc-text">
+          <span class="loc-name" id="locName">Locating…</span>
+          <span class="loc-sub" id="hijriDate">—</span>
+        </span>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="icon-row">
+        <button class="icon-btn" id="calendarToggle" title="Toggle calendar">🕓</button>
+        <button class="icon-btn" id="bellToggle" title="Toggle notifications">🔔</button>
+      </div>
+    </header>
+
+    <!-- Sunrise / Sunset chips -->
+    <div class="chip-row">
+      <div class="chip">
+        <span class="chip-icon">🌅</span>
+        <span class="chip-label">Sunrise</span>
+        <span class="chip-time" id="sunriseTime">--:--</span>
+      </div>
+      <div class="chip">
+        <span class="chip-icon">🌇</span>
+        <span class="chip-label">Sunset</span>
+        <span class="chip-time" id="sunsetTime">--:--</span>
+      </div>
+    </div>
+
+    <!-- Active waqt ring -->
+    <section class="ring-card">
+      <svg class="ring" viewBox="0 0 160 160">
+        <defs>
+          <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#37c98f" />
+            <stop offset="100%" stop-color="#4fb6e0" />
+          </linearGradient>
+        </defs>
+        <circle class="ring-track" cx="80" cy="80" r="70"></circle>
+        <circle class="ring-progress" id="ringProgress" cx="80" cy="80" r="70"></circle>
+      </svg>
+      <div class="ring-center">
+        <span class="ring-waqt-icon" id="ringIcon">🌙</span>
+        <span class="ring-waqt-name" id="ringName">Fajr</span>
+        <span class="ring-countdown" id="ringCountdown">00:00:00</span>
+        <span class="ring-mode" id="ringMode">ends in</span>
+      </div>
+    </section>
+
+    <!-- Mini calendar (hidden by default) -->
+    <section class="calendar-card hidden" id="calendarCard">
+      <div class="cal-header">
+        <button class="cal-nav" id="calPrev">‹</button>
+        <span id="calMonthLabel">—</span>
+        <button class="cal-nav" id="calNext">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </section>
+
+    <!-- Salat Times list -->
+    <section class="list-card">
+      <div class="list-header">
+        <span>Salat Times</span>
+        <button class="link-btn" id="alarmLink">Set Alarm</button>
+      </div>
+      <ul class="salat-list" id="salatList">
+        <!-- rows injected by popup.js -->
+      </ul>
+    </section>
+
+    <div class="status-line" id="statusLine"></div>
+  </div>
+
+  <!-- Settings overlay -->
+  <div class="overlay hidden" id="settingsOverlay">
+    <div class="overlay-card">
+      <div class="overlay-header">
+        <span>Location &amp; Settings</span>
+        <button class="icon-btn" id="closeSettings">✕</button>
+      </div>
+
+      <button class="primary-btn" id="useGeoBtn">📍 Use my location</button>
+
+      <div class="field-group">
+        <label for="cityInput">Manual city</label>
+        <div class="field-row">
+          <input type="text" id="cityInput" placeholder="e.g. Dhaka" />
+          <input type="text" id="countryInput" placeholder="Country (e.g. Bangladesh)" />
+        </div>
+        <button class="secondary-btn" id="searchCityBtn">Search</button>
+      </div>
+
+      <div class="field-group">
+        <label for="methodSelect">Calculation method</label>
+        <select id="methodSelect"></select>
+      </div>
+
+      <label class="checkbox-row">
+        <input type="checkbox" id="widgetToggle" checked />
+        <span>Float across browser tabs (always shows countdown)</span>
+      </label>
+
+      <button class="primary-btn" id="saveSettingsBtn">Save</button>
+      <div class="settings-status" id="settingsStatus"></div>
+    </div>
+  </div>
+
+  <script src="js/core.js"></script>
+  <script src="js/popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Namaz Times — Liquid Glass",
+  "version": "1.0.0",
+  "description": "Pinned popup showing all 5 waqts with a live countdown, sunrise/sunset, and a soft liquid-glass design. Powered by the Aladhan API.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Namaz Times"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/core.js", "js/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "alarms", "notifications", "geolocation"],
+  "host_permissions": ["https://api.aladhan.com/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["css/overlay.css", "icons/icon128.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

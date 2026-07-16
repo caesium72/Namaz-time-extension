@@ -1,0 +1,88 @@
+#namaz-floating-widget {
+  all: initial;
+  position: fixed;
+  top: 90px;
+  right: 24px;
+  width: 92px;
+  height: 92px;
+  z-index: 2147483647;
+  font-family: "Segoe UI", sans-serif;
+  cursor: grab;
+  user-select: none;
+}
+
+#namaz-floating-widget:active { cursor: grabbing; }
+
+#namaz-floating-widget * { box-sizing: border-box; }
+
+#namaz-floating-widget .nfw-drag-handle {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: rgba(12, 20, 17, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 24px rgba(55, 201, 143, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+#namaz-floating-widget .nfw-drag-handle:hover {
+  transform: scale(1.04);
+}
+
+#namaz-floating-widget .nfw-ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+  width: 92px;
+  height: 92px;
+}
+
+#namaz-floating-widget .nfw-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 7;
+}
+
+#namaz-floating-widget .nfw-progress {
+  fill: none;
+  stroke: url(#nfwGradient);
+  stroke-width: 7;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+#namaz-floating-widget .nfw-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  z-index: 1;
+}
+
+#namaz-floating-widget .nfw-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+#namaz-floating-widget .nfw-time {
+  font-size: 12px;
+  font-weight: 800;
+  color: #eef5f1;
+  font-variant-numeric: tabular-nums;
+  font-family: "Consolas", "SFMono-Regular", ui-monospace, monospace;
+}
+
+#namaz-floating-widget .nfw-label {
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #93a8a0;
+}

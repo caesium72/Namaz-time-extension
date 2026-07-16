@@ -1,7 +1,7 @@
 # Namaz Timing Extension
 
 <p align="center">
-  <img src="assets/namaz-timing-extension.png" alt="Namaz Timing Extension" width="220">
+  <img src="assets/namaz-timing-extension-logo.png" alt="Namaz Timing Extension" width="220">
 </p>
 
 <p align="center">

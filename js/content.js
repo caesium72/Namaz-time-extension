@@ -47,9 +47,13 @@
       <div class="nfw-drag-handle">
         <svg class="nfw-ring" viewBox="0 0 92 92">
           <defs>
-            <linearGradient id="nfwGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#37c98f" />
-              <stop offset="100%" stop-color="#4fb6e0" />
+            <linearGradient id="nfwGradient" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="objectBoundingBox">
+              <animateTransform attributeName="gradientTransform" type="rotate"
+                from="0 0.5 0.5" to="360 0.5 0.5" dur="14s" repeatCount="indefinite" />
+              <stop offset="0%" stop-color="#ef4444" />
+              <stop offset="33%" stop-color="#8b5cf6" />
+              <stop offset="66%" stop-color="#3b82f6" />
+              <stop offset="100%" stop-color="#1e2a6e" />
             </linearGradient>
           </defs>
           <circle class="nfw-track" cx="46" cy="46" r="40"></circle>
@@ -62,7 +66,9 @@
         </div>
       </div>
     `;
+    widgetEl.classList.add("nfw-enter");
     document.documentElement.appendChild(widgetEl);
+    widgetEl.addEventListener("animationend", () => widgetEl.classList.remove("nfw-enter"), { once: true });
 
     if (pos && typeof pos.top === "number") {
       widgetEl.style.top = pos.top + "px";
@@ -111,6 +117,7 @@
 
     el.addEventListener("mousedown", (e) => {
       dragging = true;
+      el.classList.add("nfw-dragging");
       const rect = el.getBoundingClientRect();
       startX = e.clientX;
       startY = e.clientY;
@@ -131,6 +138,7 @@
     window.addEventListener("mouseup", () => {
       if (!dragging) return;
       dragging = false;
+      el.classList.remove("nfw-dragging");
       const rect = el.getBoundingClientRect();
       storage.set({ widgetPos: { top: rect.top, left: rect.left } });
     });

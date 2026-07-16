@@ -1,14 +1,17 @@
 :root {
-  --bg-base: #0b1310;
-  --ink: #eef5f1;
-  --ink-soft: #93a8a0;
-  --accent: #37c98f;
-  --accent-2: #4fb6e0;
-  --gold: #e8b95a;
+  --bg-base: #0a0e22;
+  --ink: #f3f0fb;
+  --ink-soft: #9b95c2;
+  --accent: #8b5cf6;
+  --accent-2: #3b82f6;
+  --c-red: #ef4444;
+  --c-violet: #8b5cf6;
+  --c-blue: #3b82f6;
+  --c-navy: #1e2a6e;
   --glass: rgba(255, 255, 255, 0.06);
   --glass-strong: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.14);
-  --shadow-glow: 0 8px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-glow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   --radius-lg: 26px;
   --radius-md: 20px;
   --radius-sm: 14px;
@@ -52,7 +55,7 @@ html, body {
   height: 260px;
   left: -70px;
   top: -60px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
+  background: radial-gradient(circle at 30% 30%, var(--c-red), transparent 70%);
   animation: driftA 16s ease-in-out infinite;
 }
 
@@ -61,7 +64,7 @@ html, body {
   height: 220px;
   right: -60px;
   top: 120px;
-  background: radial-gradient(circle at 60% 40%, var(--accent-2), transparent 70%);
+  background: radial-gradient(circle at 60% 40%, var(--c-blue), transparent 70%);
   animation: driftB 20s ease-in-out infinite;
 }
 
@@ -70,7 +73,7 @@ html, body {
   height: 240px;
   left: 60px;
   bottom: -100px;
-  background: radial-gradient(circle at 50% 50%, var(--gold), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, var(--c-violet), transparent 70%);
   animation: driftC 24s ease-in-out infinite;
 }
 
@@ -176,7 +179,7 @@ html, body {
 .icon-btn.active {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   border-color: transparent;
-  color: #06120d;
+  color: #ffffff;
 }
 
 /* ---------- Sunrise / Sunset chips ---------- */
@@ -216,7 +219,13 @@ html, body {
   width: 208px;
   height: 208px;
   transform: rotate(-90deg);
-  filter: drop-shadow(0 0 22px rgba(55, 201, 143, 0.28));
+  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.35)) drop-shadow(0 0 14px rgba(59, 130, 246, 0.28));
+  animation: ringBreathe 5s ease-in-out infinite;
+}
+
+@keyframes ringBreathe {
+  0%, 100% { transform: rotate(-90deg) scale(1); }
+  50% { transform: rotate(-90deg) scale(1.025); }
 }
 
 .ring-track {
@@ -272,7 +281,7 @@ html, body {
 
 .ring-mode {
   font-size: 10px;
-  color: var(--accent);
+  color: var(--c-red);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 700;
@@ -331,7 +340,7 @@ html, body {
 
 .cal-grid .day.today {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #06120d;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -390,11 +399,11 @@ html, body {
 
 .salat-row.active {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #06120d;
+  color: #ffffff;
   box-shadow: var(--shadow-glow);
 }
 
-.salat-row.active .salat-sub { color: rgba(6, 18, 13, 0.7); }
+.salat-row.active .salat-sub { color: rgba(255, 255, 255, 0.85); }
 
 .salat-icon {
   width: 32px;
@@ -408,7 +417,7 @@ html, body {
   flex-shrink: 0;
 }
 
-.salat-row.active .salat-icon { background: rgba(6, 18, 13, 0.18); }
+.salat-row.active .salat-icon { background: rgba(255, 255, 255, 0.22); }
 
 .salat-name-col { flex: 1; min-width: 0; }
 
@@ -435,7 +444,7 @@ html, body {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(4, 10, 8, 0.55);
+  background: rgba(5, 7, 20, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -449,7 +458,7 @@ html, body {
   width: 320px;
   max-height: 480px;
   overflow-y: auto;
-  background: rgba(18, 26, 22, 0.88);
+  background: rgba(14, 18, 40, 0.88);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 18px;
@@ -472,7 +481,7 @@ html, body {
 
 .primary-btn {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #06120d;
+  color: #ffffff;
   border: none;
   border-radius: var(--radius-pill);
   padding: 11px;
@@ -483,9 +492,9 @@ html, body {
 }
 
 .secondary-btn {
-  background: rgba(55, 201, 143, 0.16);
+  background: rgba(139, 92, 246, 0.18);
   color: var(--accent);
-  border: 1px solid rgba(55, 201, 143, 0.3);
+  border: 1px solid rgba(139, 92, 246, 0.35);
   border-radius: var(--radius-pill);
   padding: 9px;
   font-size: 12.5px;
